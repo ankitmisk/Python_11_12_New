@@ -1,0 +1,131 @@
+# 
+select * from eci.emp_details;
+
+
+select * from world.country;
+
+
+select name,continent,population,lifeexpectancy from world.country;
+
+
+# how to filter records
+
+-- where statement
+
+select name,continent,population,lifeexpectancy from world.country
+where population >= 150000000;
+
+# relational op:- <,>,<=,>=,=,!=,   <>
+
+select name,continent,population from world.country
+where continent = 'south america';
+
+# logical op:- and, or, not
+
+select name,continent,population from world.country
+where continent = 'south america' and population <= 10000000;
+
+
+
+
+select name,continent,population from world.country
+where continent = 'south america' or population <= 10000000;
+
+
+
+
+select name,continent,population,lifeexpectancy from world.country
+where population <= 10000 and lifeexpectancy >=60 and continent = 'africa';
+
+
+# membership op:- in or not in
+
+
+select name,continent, population from world.country
+where continent in ('asia','africa','south america','north america') and population < 10000;
+
+
+
+select name,continent, population from world.country
+where continent not in ('asia','africa','south america','north america') and population < 10000;
+
+
+
+
+
+
+# some aggregations funcs
+
+-- sum()
+-- min()
+-- max()
+-- count()
+-- avg()
+-- std()
+
+
+select population from world.country;
+
+
+
+select min(population) from world.country;
+
+
+select * from world.country
+where population = 0;
+
+
+
+# aliasing
+select min(population) as "Min Population" from world.country;
+
+
+select max(population) as "Max Population" from world.country;
+
+
+select * from world.country
+where population = 1277558000;
+
+
+-- select * from world.country
+-- where population = select max(population) from world.country ;
+
+
+select sum(population) as "Total Population" from world.country;
+
+
+select Avg(population) as "Average Population" from world.country;
+
+
+
+
+
+# update a record
+
+select * from eci.emp_details;
+
+
+update eci.emp_details set name = 'Mohit Khanna'
+where eid = 5;
+
+
+
+update eci.emp_details set name = 'Ravi verma', designation = 'Sr HR',
+salary_id = 'S5'
+where eid = 3;
+
+
+# Delete statement
+
+-- delete from eci.emp_details;
+
+delete from eci.emp_details where 
+eid in (1,2,3);
+
+
+select * from eci.emp_details;
+
+
+# bulk delete
+
+delete from eci.emp_details;

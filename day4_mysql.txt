@@ -1,0 +1,207 @@
+# group by,having clause
+# like op
+# with where clause
+
+# grouped data
+# aggegration func
+select * from world.country;
+
+# sum, min,max,avg,count
+
+select sum(population) from world.country;
+
+select sum(population) as 'Total Population' from world.country;
+
+
+select sum(population) 'Total Population Pr' from world.country;
+
+
+
+select sum(population) as Total_Population from world.country;
+
+select sum(population) Total_Population from world.country;
+
+select min(population) Min_Population from world.country;
+
+
+select max(population) Max_Population from world.country;
+
+
+
+select avg(population) Average_Population from world.country;
+
+
+select count(population) Data_count from world.country;
+
+select count(name) Data_count from world.country;
+
+
+select count(*) Data_count from world.country;
+
+
+
+select count(0) Data_count from world.country;
+
+
+# grouped data
+
+
+select * from  world.country;
+
+select continent, sum(population)  from world.country
+group by continent;
+
+
+
+
+select continent, sum(population)  as "Total Population" from world.country
+group by continent;
+
+
+
+select continent as Continent, 
+sum(population)  as "Total Population" 
+from world.country
+group by continent;
+
+
+select * from world.country;
+
+
+select Region, 
+avg(surfacearea) as "Average Surface Area"
+from world.country
+group by region;
+
+
+
+
+select Region, 
+avg(surfacearea) as "Average Surface Area"
+from world.country
+group by region
+order by avg(surfacearea) desc;
+
+
+
+
+select Region, 
+avg(surfacearea) as "Average Surface Area"
+from world.country
+group by region
+order by avg(surfacearea) desc
+limit 5;
+
+
+
+select Continent,
+sum(population) as Total_Population,
+min(population) as Min_Population,
+max(population) as Max_Population,
+avg(population) as Avg_Population
+from world.country
+group by continent;
+
+
+
+
+
+select Continent,
+sum(population) as Total_Population,
+min(population) as Min_Population,
+max(population) as Max_Population,
+avg(population) as Avg_Population
+from world.country
+group by continent
+order by Total_Population desc, Avg_Population;
+
+
+
+#====================================================================
+
+select * from world.country;
+
+
+select Continent, Region, 
+sum(surfacearea) as "Total Surface Area"
+from world.country
+group by Continent,Region
+order by continent,sum(surfacearea);
+
+
+
+
+
+
+select continent, 
+sum(surfacearea) as TSA
+from world.country
+group by continent;
+
+
+
+select continent, 
+sum(surfacearea) as TSA
+from world.country
+group by continent
+where continent <> 'Europe';
+
+
+
+
+
+select continent, 
+sum(surfacearea) as TSA
+from world.country
+where continent <> 'Europe'
+group by continent;
+
+
+
+# having clause After group by
+select continent, 
+sum(surfacearea) as TSA
+from world.country
+where continent <> 'Europe'
+group by continent
+having sum(surfacearea) >=20000000;
+
+
+
+
+# like op
+
+select * from world.country;
+
+
+select name,population from world.country
+where name like 'f%';
+
+
+
+
+select name,population from world.country
+where name like '%ies';
+
+
+
+select name,population from world.country
+where name like 'chi%';
+
+
+
+
+select name,population from world.country
+where name like 'b%s';
+
+
+select name,population from world.country
+where name like '%ing%';
+
+
+
+select name,population from world.country
+where name like 'c__d';
+
+select name,population from world.country
+where name like '____';

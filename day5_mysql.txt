@@ -1,0 +1,92 @@
+# Alter:- table name, column name,new column add, old column delete,
+# Existing column datatype change, constraints add, delete
+
+# GUI,query
+
+# 
+select * from fan.employee_data;
+
+alter table fan.employee_data
+rename to fan.employee_details;
+
+
+select * from fan.employee_data;
+
+select * from fan.employee_details;
+
+
+
+#===================================================
+#new column add 
+
+alter table fan.employee_details
+add column experience smallint null after designation;
+
+
+# drop or remove column
+select * from fan.employee_details;
+
+alter table fan.employee_details
+drop column experience;
+
+
+alter table fan.employee_details
+add column experience smallint not null default 3 after salary;
+
+
+
+desc fan.employee_details;
+
+
+
+
+
+alter table fan.employee_details
+change column salary employee_salary bigint not null default 20000;
+
+
+
+insert into fan.employee_details values
+(101,"Ajay Verma","Not IT",'Noida','Executive',default,20,default);
+
+
+
+
+
+
+
+select * from fan.employee_details;
+
+
+
+insert into fan.employee_details
+(eid,emp_name,dept,address,designation,employee_salary,age,bonus)
+values
+(103,"Ezra","Not IT",'Noida','Sr Executive',default,20,default);
+
+
+
+truncate fan.employee_details;
+
+
+
+
+
+create table fan.student_details 
+(sid int, 
+full_name varchar(20),
+address varchar(20));
+
+select * from fan.student_details;
+
+
+insert into fan.student_details(full_name,address) values
+('karan','Noida'),
+('Ajay','Noida'),
+('ravi','Gr Noida'),
+('Nikhil','Gr Noida');
+
+
+insert into fan.student_details values
+(100,'Nikhil','Gr Noida');
+
